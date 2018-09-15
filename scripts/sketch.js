@@ -1,6 +1,7 @@
+let t;
 let deltas=[];
 function setup() {
-	createCanvas(2000, 1250);
+	createCanvas(950, 600);
 	background(52);
 	colorMode(HSB);
   deltas.push(0);
@@ -14,7 +15,6 @@ function setup() {
   deltas.push(PI*2);
 	init();
 }
-let t = 1;
 
 function init(){
 	t=1;
@@ -22,25 +22,24 @@ function init(){
 	background(52);
 	colorMode(HSB);
 	noFill();
-	strokeWeight(3);
+	strokeWeight(2);
 }
 
 function draw() {
   //formula from https://en.wikipedia.org/wiki/Lissajous_curve
   
-	for (let a = 1; a < 10; a++) {
-    let rowDist=70;
-		stroke(a*25, 100, 100); //Color! yey!!!
-    
-    let x = a * sin(t / a + deltas[a]);
+	for (let a = 1; a < 9; a++) {
+    let rowDist=50;
+		let x = a * sin(t / a + deltas[a]);
     
 		for (let b = 1; b <= 5; b++) {
-      let newDist= rowDist*(a*3);
+      stroke((a+b)*25, 100, 100); //Color! yey!!!
+      
+      let newDist= rowDist*(a*2);
 			let y = b * sin(t / b);
+			let colDist=50*b*2;
 			
-			let colDist=100*b*2;
-			
-			point(x * 10 + newDist, y * 10 + colDist);
+			point(x * 5 + newDist, y * 5 + colDist);
 		}
 	}
 
